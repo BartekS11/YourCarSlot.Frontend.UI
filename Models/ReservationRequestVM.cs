@@ -20,5 +20,7 @@ namespace YourCarSlot.Frontend.UI.Models
         [Display(Name="Parking spot number")]
         public int ParkingspotId { get; set; }
 
+        public bool Reserved { get; set; }
+
     }
 }
