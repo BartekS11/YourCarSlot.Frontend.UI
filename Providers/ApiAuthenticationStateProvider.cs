@@ -20,7 +20,7 @@ namespace YourCarSlot.Frontend.UI.Providers
         {
             var user = new ClaimsPrincipal(new ClaimsIdentity());
             var isTokenPresent = await _localStorage.ContainKeyAsync("token");
-            if (isTokenPresent)
+            if (isTokenPresent == false)
             {
                 return new AuthenticationState(user);
             }
