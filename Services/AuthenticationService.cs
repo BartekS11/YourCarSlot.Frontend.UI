@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using YourCarSlot.Frontend.UI.Contracts;
@@ -22,17 +18,27 @@ namespace YourCarSlot.Frontend.UI.Services
 
         public async Task<bool> AuthenticationAsync(string email, string password)
         {
-            AuthRequest authenticationRequest = new AuthRequest() { Email = email, Password = password };
-            var authenticationResponse = await _client.LoginAsync(authenticationRequest);
-            if (authenticationResponse.Token != string.Empty)
+            try
             {
-                await _localStorage.SetItemAsync("token", authenticationResponse.Token);
+                AuthRequest authenticationRequest = new AuthRequest() { Email = email, Password = password };
+                var authenticationResponse = await _client.LoginAsync(authenticationRequest);
+                var authToken = authenticationResponse.Token;
+                if (authenticationResponse.Token != string.Empty)
+                {
+                    await _localStorage.SetItemAsync("token1", $"{authToken}");
+                    await _localStorage.SetItemAsync("token", $"{authToken}");
 
-                await ((ApiAuthenticationStateProvider)
-                    _authenticationStateProvider).LoggedIn();
-                return true;
+                    await ((ApiAuthenticationStateProvider)
+                        _authenticationStateProvider).LoggedIn();
+                    System.Console.WriteLine(authenticationResponse.Token);
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch(Exception)
+            {
+                return false;
+            }
         }
 
         public async Task Logout()

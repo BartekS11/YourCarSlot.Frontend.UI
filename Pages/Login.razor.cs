@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Components;
 using YourCarSlot.Frontend.UI.Contracts;
 using YourCarSlot.Frontend.UI.Models;
+using YourCarSlot.Frontend.UI.Models.Authentication;
 
 namespace YourCarSlot.Frontend.UI.Pages
 {
     public partial class Login
     {
-        public LoginVM Model { get; set; }
+        public Models.Authentication.LoginVM Model { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
@@ -22,7 +23,7 @@ namespace YourCarSlot.Frontend.UI.Pages
 
         protected override void OnInitialized()
         {
-            Model = new LoginVM();
+            Model = new Models.Authentication.LoginVM();
         }
 
         protected async Task HandleLogin()

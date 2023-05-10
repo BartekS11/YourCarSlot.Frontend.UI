@@ -23,12 +23,12 @@ namespace YourCarSlot.Frontend.UI.Pages
 
         protected void GoToLogin()
         {
-            navigationManager.NavigateTo("login/");
+            navigationManager.NavigateTo("Login/");
         }
 
         protected void GoToRegister()
         {
-            navigationManager.NavigateTo("register/");
+            navigationManager.NavigateTo("Register/");
         }
 
         protected async void Logout()

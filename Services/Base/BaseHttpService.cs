@@ -1,11 +1,12 @@
 using Blazored.LocalStorage;
+using System.Net.Http.Headers;
 
 namespace YourCarSlot.Frontend.UI.Services.Base
 {
     public class BaseHttpService
     {
         protected IClient _client;
-        protected readonly ILocalStorageService _localStorage;
+        protected ILocalStorageService _localStorage;
 
         public BaseHttpService(IClient client, ILocalStorageService localStorage)
         {
@@ -32,10 +33,10 @@ namespace YourCarSlot.Frontend.UI.Services.Base
 
         protected async Task AddBearerToken()
         {
-            if (await _localStorage.ContainKeyAsync("token"))
-                _client.httpClient.DefaultRequestHeaders.Authorization = 
-                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", 
-                        await _localStorage.GetItemAsync<string>("token"));
+            var token = await _localStorage.GetItemAsync<string>("token1");
+            System.Console.WriteLine($"TOKEN {token}");
+            if (await _localStorage.ContainKeyAsync("token1"))
+                _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }
     }
 }

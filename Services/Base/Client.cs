@@ -2,7 +2,7 @@ namespace YourCarSlot.Frontend.UI.Services.Base
 {
     public partial class Client : IClient
     {
-        public HttpClient httpClient
+        public HttpClient HttpClient
         {
             get { return _httpClient; }
         }

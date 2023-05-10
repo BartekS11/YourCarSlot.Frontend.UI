@@ -11,7 +11,7 @@ namespace YourCarSlot.Frontend.UI.Pages.ReservationRequests
 
         [Inject]
         public IReservationRequestService ReservationRequestService { get; set; }
-        public List<ReservationRequestVM> reservationRequests { get; private set; }
+        public List<ReservationRequestVM> reservationRequests { get; set; }
         public string Message { get; set; } = string.Empty;
 
         protected void CreateReservationRequest()
@@ -49,6 +49,7 @@ namespace YourCarSlot.Frontend.UI.Pages.ReservationRequests
 
         protected override async Task OnInitializedAsync()
         {
+            System.Console.WriteLine("rsrfafasf");
             reservationRequests = await ReservationRequestService.GetAllReservationRequestVMs();
         }
     }
