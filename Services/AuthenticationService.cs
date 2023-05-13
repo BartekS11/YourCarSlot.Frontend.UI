@@ -26,11 +26,11 @@ namespace YourCarSlot.Frontend.UI.Services
                 if (authenticationResponse.Token != string.Empty)
                 {
                     await _localStorage.SetItemAsync("token1", $"{authToken}");
-                    await _localStorage.SetItemAsync("token", $"{authToken}");
+                    // await _localStorage.SetItemAsync("token", $"{authToken}");
 
                     await ((ApiAuthenticationStateProvider)
                         _authenticationStateProvider).LoggedIn();
-                    System.Console.WriteLine(authenticationResponse.Token);
+                    // System.Console.WriteLine(authenticationResponse.Token);
                     return true;
                 }
                 return false;
@@ -43,7 +43,7 @@ namespace YourCarSlot.Frontend.UI.Services
 
         public async Task Logout()
         {
-            // await _localStorage.RemoveItemAsync("token");
+            await _localStorage.RemoveItemAsync("token1");
             await ((ApiAuthenticationStateProvider)
                     _authenticationStateProvider).LoggedOut();
         }

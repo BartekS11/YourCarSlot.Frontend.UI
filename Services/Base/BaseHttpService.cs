@@ -34,7 +34,7 @@ namespace YourCarSlot.Frontend.UI.Services.Base
         protected async Task AddBearerToken()
         {
             var token = await _localStorage.GetItemAsync<string>("token1");
-            System.Console.WriteLine($"TOKEN {token}");
+            // System.Console.WriteLine($"TOKEN {token}");
             if (await _localStorage.ContainKeyAsync("token1"))
                 _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }

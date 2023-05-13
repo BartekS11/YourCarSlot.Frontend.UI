@@ -19,13 +19,13 @@ namespace YourCarSlot.Frontend.UI.Providers
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             var user = new ClaimsPrincipal(new ClaimsIdentity());
-            var isTokenPresent = await _localStorage.ContainKeyAsync("token");
+            var isTokenPresent = await _localStorage.ContainKeyAsync("token1");
             if (isTokenPresent == false)
             {
                 return new AuthenticationState(user);
             }
 
-            var savedToken = await _localStorage.GetItemAsync<string>("token");
+            var savedToken = await _localStorage.GetItemAsync<string>("token1");
             var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(savedToken);
 
             if (tokenContent.ValidTo < DateTime.Now)
@@ -59,7 +59,7 @@ namespace YourCarSlot.Frontend.UI.Providers
 
         private async Task<List<Claim>> GetClaims()
         {
-            var savedToken = await _localStorage.GetItemAsync<string>("token");
+            var savedToken = await _localStorage.GetItemAsync<string>("token1");
             var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(savedToken);
             var claims = tokenContent.Claims.ToList();
             claims.Add(new Claim(ClaimTypes.Name, tokenContent.Subject));

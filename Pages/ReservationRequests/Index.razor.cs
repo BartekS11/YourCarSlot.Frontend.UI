@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using YourCarSlot.Frontend.UI.Contracts;
 using YourCarSlot.Frontend.UI.Models;
 
@@ -11,6 +12,8 @@ namespace YourCarSlot.Frontend.UI.Pages.ReservationRequests
 
         [Inject]
         public IReservationRequestService ReservationRequestService { get; set; }
+        [Inject]
+        public IJSRuntime JS { get; set; }
         public List<ReservationRequestVM> reservationRequests { get; set; }
         public string Message { get; set; } = string.Empty;
 
@@ -26,7 +29,7 @@ namespace YourCarSlot.Frontend.UI.Pages.ReservationRequests
 
         protected void EditReservationRequset(Guid id)
         {
-            navigationManager.NavigateTo($"/reservationrequests/edit/{id}");
+            navigationManager.NavigateTo($"/reservationrequests/edit/{id.ToString()}");
         }
 
         protected void DetailsReservationRequset(Guid id)
@@ -36,20 +39,24 @@ namespace YourCarSlot.Frontend.UI.Pages.ReservationRequests
 
         protected async Task DeleteReservationRequset(Guid id)
         {
-            var response = await ReservationRequestService.DeleteReservationRequest(id);
-            if (response.Success)
+            bool confirmed = await JS.InvokeAsync<bool>("confirm", "are u sure");
+            if(confirmed)
             {
-                StateHasChanged();
-            }
-            else
-            {
-                Message = response.Message;
+                var response = await ReservationRequestService.DeleteReservationRequest(id);
+                if (response.Success)
+                {
+                    StateHasChanged();
+                }
+                else
+                {
+                    Message = response.Message;
+                }
             }
         }
 
         protected override async Task OnInitializedAsync()
         {
-            System.Console.WriteLine("rsrfafasf");
+            // System.Console.WriteLine("rsrfafasf");
             reservationRequests = await ReservationRequestService.GetAllReservationRequestVMs();
         }
     }

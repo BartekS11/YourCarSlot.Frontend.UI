@@ -1,0 +1,28 @@
+<EditForm Model="@ReservationRequest" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Name:</label>
+            <div>
+                <InputNumber @bind-Value="@ReservationRequest.ParkingspotId" class="form-control" />
+                <ValidationMessage For="@(() => ReservationRequest.ParkingspotId)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Default Days:</label>
+            <div>
+                <InputText @bind-Value="@ReservationRequest.UserRequestingIdAsString" class="form-control" />
+                <ValidationMessage For="@(() => ReservationRequest.UserRequestingIdAsString)" />
+            </div>
+        </div>
+    </fieldset>
+    @if (!Disabled)
+        {
+            <button type="submit" class="btn btn-success btn-block">
+                @ButtonText
+            </button>
+        }
+        <BackToList Target="reservationrequsets/" />
+</EditForm>

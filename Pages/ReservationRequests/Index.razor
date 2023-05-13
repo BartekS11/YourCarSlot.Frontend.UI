@@ -51,7 +51,7 @@ else
                         <td>@reservationREquest.PlateNumber</td>
                         <td>@reservationREquest.Reserved</td>
                         <td>
-                            <button @onclick=@(()=> AllocateReservationRequset(reservationREquest.Id))
+                            <button @onclick=@(()=> CreateReservationRequest())
                                 class="btn btn-dark">
                                 Create reservation
                                 </button>
@@ -61,11 +61,11 @@ else
                                 </button>
                             <button @onclick=@(()=> DetailsReservationRequset(reservationREquest.Id))
                                 class="btn btn-info">
-                                Edit
+                                Details
                                 </button>
                             <button @onclick=@(()=> DeleteReservationRequset(reservationREquest.Id))
                                 class="btn btn-danger">
-                                Edit
+                                Delete
                                 </button>
                         </td>
                     </tr>   
