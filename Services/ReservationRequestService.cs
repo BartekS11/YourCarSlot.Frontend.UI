@@ -80,9 +80,15 @@ namespace YourCarSlot.Frontend.UI.Services
             {   
                 return ConvertApiExceptions<Guid>(ex);
             }
-
-
-
         }
+        // public async Task<List<ReservationRequestVM>> GetAllReservationRequestVMsByUser()
+        // {
+        //     await AddBearerToken();
+        //     var reservationRequestsVM = await _client.ReservationRequestAllAsync();
+
+        //     reservationRequestsVM = reservationRequestsVM.Where(item => item.UserRequestingId == )
+            
+        //     return _mapper.Map<List<ReservationRequestVM>>(reservationRequestsVM);
+        // }
     }
 }

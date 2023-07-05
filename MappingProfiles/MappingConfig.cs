@@ -11,6 +11,7 @@ namespace YourCarSlot.Frontend.UI.MappingProfiles
             CreateMap<ReservationRequestDto, ReservationRequestVM>().ReverseMap();
             CreateMap<CreateReservationCommand, ReservationRequestVM>().ReverseMap();
             CreateMap<UpdateParkingSlotCommand, ReservationRequestVM>().ReverseMap();
+            //CreateMap<EmployeeVM, Employee>().ReverseMap();
         }
     }
 }

@@ -1,4 +1,4 @@
-@page "/reservationrequests/"
+@page "/reservationrequestsEmployee"
 
 <h1>Reservation Requests</h1>
 
@@ -44,7 +44,6 @@ else
             <tbody>
                 @foreach (var reservationREquest in reservationRequests)
                 {
-                    <AuthorizeView Roles="Administrator, Employee">
                     <tr>
                         <td>@reservationREquest.Id</td>
                         <td>@reservationREquest.ParkingspotId</td>
@@ -52,6 +51,7 @@ else
                         <td>@reservationREquest.PlateNumber</td>
                         <td>@reservationREquest.Reserved</td>
                         <td>
+                            <AuthorizeView Roles="Administrator, Employee">
                             <button @onclick=@(()=> CreateReservationRequest())
                                 class="btn btn-dark">
                                 Create reservation
@@ -68,12 +68,9 @@ else
                                 class="btn btn-danger">
                                 Delete
                                 </button>
-                            
+                            </AuthorizeView>
                         </td>
                     </tr>   
-                    </AuthorizeView>
-
-
                 }
             </tbody>
     </table>

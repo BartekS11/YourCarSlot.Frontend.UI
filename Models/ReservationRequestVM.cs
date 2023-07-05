@@ -16,8 +16,7 @@ namespace YourCarSlot.Frontend.UI.Models
             get { return Guid.TryParse(UserRequestingIdAsString, out Guid g) ? g : default; }
             set { UserRequestingIdAsString = Convert.ToString(value); }
         }
-
-        [Required]
+        // [Required]
         public string PlateNumber { get; set; }
 
         [Required]

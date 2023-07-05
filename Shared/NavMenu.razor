@@ -29,22 +29,29 @@
                 <hr/>
                 </Authorized>
                 </AuthorizeView>
-                <AuthorizeView Roles="Administrator, Employee">
+                <AuthorizeView Roles="Administrator">
                  <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/reservationrequests/">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> Create Reservation
                     </NavLink>
                 </div>
                 </AuthorizeView>
+                <AuthorizeView Roles="Employee">
+                 <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/reservationrequestsEmployee/">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Create Reservation
+                    </NavLink>
+                </div>
+                </AuthorizeView>
            
-       
+@*        
         <AuthorizeView Roles="Administrator">
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="leaverequests/">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Modify Reservation
                 </NavLink>
             </div>
-        </AuthorizeView>
+        </AuthorizeView> *@
 
         <AuthorizeView Roles="Guest">
             <div class="nav-item px-3">
