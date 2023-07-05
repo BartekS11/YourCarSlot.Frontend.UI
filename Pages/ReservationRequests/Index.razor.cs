@@ -56,7 +56,6 @@ namespace YourCarSlot.Frontend.UI.Pages.ReservationRequests
 
         protected override async Task OnInitializedAsync()
         {
-            // System.Console.WriteLine("rsrfafasf");
             reservationRequests = await ReservationRequestService.GetAllReservationRequestVMs();
         }
     }

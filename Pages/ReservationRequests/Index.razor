@@ -51,6 +51,7 @@ else
                         <td>@reservationREquest.PlateNumber</td>
                         <td>@reservationREquest.Reserved</td>
                         <td>
+                            <AuthorizeView Roles="Administrator, Employee">
                             <button @onclick=@(()=> CreateReservationRequest())
                                 class="btn btn-dark">
                                 Create reservation
@@ -67,6 +68,7 @@ else
                                 class="btn btn-danger">
                                 Delete
                                 </button>
+                            </AuthorizeView>
                         </td>
                     </tr>   
                 }

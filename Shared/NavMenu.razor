@@ -14,7 +14,7 @@
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </div>
-        <AuthorizeView>
+        <AuthorizeView Roles="Administrator, Employee">
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link">
@@ -34,17 +34,18 @@
                 </div>
             </Authorized>
         </AuthorizeView>
-        <AuthorizeView Roles="Employee">
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="reservationrequests/">
-                    <span class="oi oi-list-rich" aria-hidden="true"></span> resres
-                </NavLink>
-            </div>
-        </AuthorizeView>
         <AuthorizeView Roles="Administrator">
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="leaverequests/">
-                    <span class="oi oi-list-rich" aria-hidden="true"></span> Leave Requests
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Modify Reservation
+                </NavLink>
+            </div>
+        </AuthorizeView>
+
+        <AuthorizeView Roles="Guest">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="leaverequests/">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Contact administrator
                 </NavLink>
             </div>
         </AuthorizeView>
