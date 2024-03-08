@@ -1,0 +1,77 @@
+@page "/reservationrequestsEmployee"
+
+<h1>Reservation Requests</h1>
+
+<div class="m-2 d-flex justify-content-end">
+    <button @onclick="CreateReservationRequest" class='btn btn-success'>Add Reservation</button>
+    
+</div>
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-damage">
+        @Message
+    </div>
+}
+<div clas></div>
+@if (reservationRequests == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Parking slot 
+                </th>
+                <th>
+                    User requesting
+                </th>
+                <th>
+                    Plate number
+                </th>
+                <th>
+                    Reserved
+                </th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var reservationREquest in reservationRequests)
+                {
+                    <tr>
+                        <td>@reservationREquest.Id</td>
+                        <td>@reservationREquest.ParkingspotId</td>
+                        <td>@reservationREquest.UserRequestingId</td>
+                        <td>@reservationREquest.PlateNumber</td>
+                        <td>@reservationREquest.Reserved</td>
+                        <td>
+                            <AuthorizeView Roles="Administrator, Employee">
+                            <button @onclick=@(()=> CreateReservationRequest())
+                                class="btn btn-dark">
+                                Create reservation
+                                </button>
+                            <button @onclick=@(()=> EditReservationRequset(reservationREquest.Id))
+                                class="btn btn-warning">
+                                Edit
+                                </button>
+                            <button @onclick=@(()=> DetailsReservationRequset(reservationREquest.Id))
+                                class="btn btn-info">
+                                Details
+                                </button>
+                            <button @onclick=@(()=> DeleteReservationRequset(reservationREquest.Id))
+                                class="btn btn-danger">
+                                Delete
+                                </button>
+                            </AuthorizeView>
+                        </td>
+                    </tr>   
+                }
+            </tbody>
+    </table>
+}

@@ -1,0 +1,42 @@
+<EditForm Model="@ReservationRequest" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Id</label>
+            <div>
+                <InputNumber @bind-Value="@ReservationRequest.IdAsString" class="form-control" />
+                <ValidationMessage For="@(() => ReservationRequest.IdAsString)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Parking slot:</label>
+            <div>
+                <InputNumber @bind-Value="@ReservationRequest.ParkingspotId" class="form-control" />
+                <ValidationMessage For="@(() => ReservationRequest.ParkingspotId)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>User requesting</label>
+            <div>
+                <InputText @bind-Value="@ReservationRequest.UserRequestingIdAsString" class="form-control" />
+                <ValidationMessage For="@(() => ReservationRequest.UserRequestingIdAsString)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Plate number</label>
+            <div>
+                <InputText @bind-Value="@ReservationRequest.PlateNumber" class="form-control" />
+                <ValidationMessage For="@(() => ReservationRequest.PlateNumber)" />
+            </div>
+        </div>
+    </fieldset>
+    @if (!Disabled)
+        {
+            <button type="submit" class="btn btn-success btn-block">
+                @ButtonText
+            </button>
+        }
+        <BackToList Target="reservationrequsets/" />
+</EditForm>

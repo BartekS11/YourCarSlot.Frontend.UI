@@ -1,0 +1,13 @@
+@page "/reservationrequests/edit/{id:guid}"
+@attribute [Authorize(Roles = "Administrator")]
+
+<h3>Edit reservation</h3>
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<FormEditComponent ButtonText="Update" ReservationRequest="reservationRequest" OnValidSubmit="@ReservationRequestEditForm" />
